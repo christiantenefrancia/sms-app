@@ -21,16 +21,15 @@ public class MessageService {
     private String AUTH_TOKEN;
 
 
-    public boolean sendMessage(MessageRequest request) {
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-        Message message = Message.creator(
-                new com.twilio.type.PhoneNumber(request.getMessageNumber()),
-                new com.twilio.type.PhoneNumber("+15417222134"),
-                request.getMessageBody())
-                .create();
-
-        LOG.info("Response - {}", message.getSid());
-
-        return true;
+    public void sendMessage(MessageRequest request) throws Exception, IllegalArgumentException {
+    	
+	        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+	        Message message = Message.creator(
+	                new com.twilio.type.PhoneNumber(request.getMessageNumber()),
+	                new com.twilio.type.PhoneNumber("+15417222134"),
+	                request.getMessageBody())
+	                .create();
+	        
+	        LOG.info("Response - {}", message.getSid());
     }
 }

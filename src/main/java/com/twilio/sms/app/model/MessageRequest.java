@@ -1,8 +1,12 @@
 package com.twilio.sms.app.model;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class MessageRequest {
 
     public String messageBody;
+    
+    @NotEmpty(message = "Number is required.")
     public String messageNumber;
 
     public String getMessageBody() {
